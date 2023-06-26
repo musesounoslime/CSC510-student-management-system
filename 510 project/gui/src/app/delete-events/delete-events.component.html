@@ -1,0 +1,58 @@
+<div>
+    <div nz-row style="margin-top:30px;">
+        <div nz-col nzSpan="2">
+        </div>
+        <div nz-col nzSpan="4">
+            <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+                <input type="text" [(ngModel)]="value" nz-input placeholder="Please enter the search content" />
+            </nz-input-group>
+            <ng-template #suffixIconButton>
+                <button nz-button nzType="primary" nzSearch (click)="search()"><span nz-icon
+                        nzType="search"></span></button>
+            </ng-template>
+        </div>
+        <div nz-col nzSpan="1"></div>
+        <div nz-col nzSpan="2">
+            <button nz-button nzDanger nzType="primary" (click)="deleteEvents()">delete</button>
+        </div>
+    </div>
+    <div nz-row style="margin-top:30px;">
+        <div nz-col nzSpan="1"></div>
+        <div nz-col nzSpan="22">
+            <nz-table #rowSelectionTable [nzFrontPagination]="false" [nzData]="list" (nzPageIndexChange)="onPageIndexChange($event)" [nzTotal]='total'  [nzPageSize]='pageSize' [nzPageIndex]="currentPage">
+                <thead>
+                    <tr>
+                        <th [(nzChecked)]="checked" [nzIndeterminate]="indeterminate"
+                            (nzCheckedChange)="onAllChecked($event)"></th>
+                        <th>Course</th>
+                        <th>Subject</th>
+                        <th>Semester</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Location</th>
+                        <th>Instructor</th>
+                        <th>Section</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of rowSelectionTable.data">
+                        <td [nzChecked]="setOfCheckedId.has(data.id)"
+                            (nzCheckedChange)="onItemChecked(data.id, $event)">
+                        </td>
+                        <td>{{ data.course }}</td>
+                        <td>{{ data.type }}</td>
+                        <td>{{ data.academic_session }}</td>
+                        <td>{{ data.date }}</td>
+                        <td>{{ data.time }}</td>
+                        <td>{{ data.location }}</td>
+                        <td>{{ data.instructor }}</td>
+                        <td>{{ data.section }}</td>
+                        <td>{{ data.description }}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+
+    </div>
+</div>

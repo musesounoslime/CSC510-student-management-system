@@ -1,0 +1,36 @@
+<ul nz-menu nzTheme='dark' nzMode="horizontal">
+    <!-- <li nz-menu-item  *ngIf="identity === 'student' " nzMatchRouter="course-select">
+        <a routerLink="/common/course-select">Course Select</a>
+    </li> -->
+    <li nz-menu-item *ngIf="identity === 'student' " nzMatchRouter="personal-schedule">
+        <a routerLink="/common/personal-schedule"> Personal Schedule</a>
+    </li>
+    <li nz-menu-item *ngIf="identity === 'student' " nzMatchRouter="lookup-events">
+        <a routerLink="/common/lookup-events"> My Events</a>
+    </li>
+    <li nz-menu-item nzSelected *ngIf="identity !== 'student' " nzMatchRouter="add-events">
+        <a routerLink="/common/add-events">Add Course</a>
+    </li>
+    <li nz-menu-item  *ngIf="identity !== 'student' " nzMatchRouter="delete-events">
+        <a routerLink="/common/delete-events">Delete Course</a>
+    </li>
+    <li nz-menu-item  *ngIf="identity !== 'student' " nzMatchRouter="academic-session">
+        <a routerLink="/common/academic-session">Semester</a>
+    </li>
+    <li nz-menu-item   nzMatchRouter="grade-chart">
+        <a routerLink="/common/grade-chart">Grade Chart</a>
+    </li>
+</ul>
+<a nz-dropdown [nzDropdownMenu]="menu" style="position: absolute;right:20px;top:10px;">
+    Account
+    <span nz-icon nzType="down"></span>
+</a>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu nzSelectable>
+        <li nz-menu-item>
+            <a href="" (click)="logout()"> logout</a>
+        </li>
+
+    </ul>
+</nz-dropdown-menu>
+<router-outlet></router-outlet>

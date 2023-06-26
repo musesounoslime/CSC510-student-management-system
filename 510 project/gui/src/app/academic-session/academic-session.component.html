@@ -1,0 +1,39 @@
+<div>
+    <div nz-row style="margin-top:30px;">
+        <div nz-col nzSpan="2">
+        </div>
+        <div nz-col nzSpan="4">
+            <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+                <input type="text" [(ngModel)]="value" nz-input />
+            </nz-input-group>
+            <ng-template #suffixIconButton>
+                <button nz-button nzType="primary" nzSearch (click)="add()">create</button>
+            </ng-template>
+        </div>   
+    </div>
+    <div nz-row style="margin-top:30px;">
+        <div nz-col nzSpan="1"></div>
+        <div nz-col nzSpan="22">
+            <nz-table #rowSelectionTable [nzFrontPagination]="false" [nzData]="AcademicSession"
+                (nzPageIndexChange)="onPageIndexChange($event)" [nzTotal]='total' [nzPageSize]='pageSize'
+                [nzPageIndex]="currentPage">
+                <thead>
+                    <tr>
+                       
+                        <th>ID</th>
+                        <th>Semester</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of rowSelectionTable.data">
+                        <td>{{ data.id }}</td>
+                        <td>{{ data.academicSession }}</td>
+                        <td><span nz-icon nzType="delete" (click)="deleteAcademicSession(data.id)"></span></td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+
+    </div>
+</div>

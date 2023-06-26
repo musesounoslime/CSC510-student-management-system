@@ -1,0 +1,45 @@
+.time-item {
+    background-color: #409EFF;
+}
+
+#time-line {
+    border: 1px #eee solid;
+    padding: 0;
+    margin: 0;
+}
+
+#time-line li {
+    height: 54px;
+    width: 100%;
+    display: flex;
+    line-height: 54px;
+    list-style: none;
+    border-bottom: 1px #eee solid;
+    box-sizing: border-box;
+}
+
+#time-line li div {
+    width: 4%;
+    height: 100%;
+
+    border-right: 1px solid #eee;
+    box-sizing: border-box;
+}
+
+.time-line li {
+    height: 54px;
+    width: 100%;
+    line-height: 54px;
+    list-style: none;
+    border-bottom: 1px #eee solid;
+
+}
+
+.time-line {
+    border: 1px #eee solid;
+    padding: 0;
+    margin: 0;
+}
+nz-table {
+    overflow-x: scroll;
+}

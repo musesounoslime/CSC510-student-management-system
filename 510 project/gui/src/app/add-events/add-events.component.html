@@ -1,0 +1,120 @@
+<div>
+    <div nz-row style="margin-top:30px;">
+        <div nz-col nzSpan="2">
+        </div>
+        <div nz-col nzSpan="4">
+            <nz-form-label>Semester</nz-form-label>
+        </div>
+        <div nz-col nzSpan="7">
+            <nz-select [(ngModel)]="AcademicSessionValue" style="width:100%">
+                <nz-option *ngFor="let item of AcademicSession" [nzValue]="item.academicSession"
+                    [nzLabel]="item.academicSession"></nz-option>
+            </nz-select>
+        </div>
+    </div>
+    <div nz-row style="margin-top:10px;">
+        <div nz-col nzSpan="2">
+        </div>
+        <div nz-col nzSpan="4">
+            <nz-form-label>Course</nz-form-label>
+        </div>
+        <div nz-col nzSpan="7">
+            <input nz-input [(ngModel)]="course" />
+
+        </div>
+    </div>
+    <div nz-row style="margin-top:10px;">
+        <div nz-col nzSpan="2">
+        </div>
+        <div nz-col nzSpan="4">
+            <nz-form-label>Subject</nz-form-label>
+        </div>
+        <div nz-col nzSpan="7">
+            <input nz-input [(ngModel)]="type" />
+
+        </div>
+    </div>
+    <div nz-row style="margin-top:10px;">
+        <div nz-col nzSpan="2">
+        </div>
+        <div nz-col nzSpan="4">
+            <nz-form-label>Date</nz-form-label>
+        </div>
+        <div nz-col nzSpan="7">
+            <nz-range-picker nzFormat="MM/dd" [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-range-picker>
+        </div>
+    </div>
+    <div nz-row style="margin-top:10px;">
+        <div nz-col nzSpan="2">
+        </div>
+        <div nz-col nzSpan="4">
+            <nz-form-label>Week</nz-form-label>
+        </div>
+        <div nz-col nzSpan="7">
+            <nz-select [(ngModel)]="week" style="width:100%">
+                <nz-option *ngFor="let item of Weeks" [nzValue]="item" [nzLabel]="item"></nz-option>
+            </nz-select>
+        </div>
+    </div>
+    <div nz-row style="margin-top:10px;">
+        <div nz-col nzSpan="2">
+        </div>
+        <div nz-col nzSpan="4">
+            <nz-form-label>Time</nz-form-label>
+        </div>
+        <div nz-col nzSpan="3">
+            <nz-time-picker  [(ngModel)]="startTime" [nzUse12Hours]="true" nzFormat="hh:mma"></nz-time-picker>
+        </div>
+        <div nz-col nzSpan="1"></div>
+        <div nz-col nzSpan="3">
+            <nz-time-picker [(ngModel)]="endTime" [nzUse12Hours]="true" nzFormat="hh:mma"></nz-time-picker>
+        </div>
+    </div>
+    <div nz-row style="margin-top:10px;">
+        <div nz-col nzSpan="2">
+        </div>
+        <div nz-col nzSpan="4">
+            <nz-form-label>location</nz-form-label>
+        </div>
+        <div nz-col nzSpan="7">
+            <input nz-input [(ngModel)]="location" />
+        </div>
+    </div>
+    <div nz-row style="margin-top:10px;">
+        <div nz-col nzSpan="2">
+        </div>
+        <div nz-col nzSpan="4">
+            <nz-form-label>instructor</nz-form-label>
+        </div>
+        <div nz-col nzSpan="7">
+            <input nz-input [(ngModel)]="instructor" />
+        </div>
+    </div>
+    <div nz-row style="margin-top:10px;">
+        <div nz-col nzSpan="2">
+        </div>
+        <div nz-col nzSpan="4">
+            <nz-form-label>section</nz-form-label>
+        </div>
+        <div nz-col nzSpan="7">
+            <input nz-input [(ngModel)]="section" />
+        </div>
+    </div>
+    <div nz-row style="margin-top:10px;">
+        <div nz-col nzSpan="2">
+        </div>
+        <div nz-col nzSpan="4">
+            <nz-form-label>description</nz-form-label>
+        </div>
+        <div nz-col nzSpan="7">
+            <input nz-input [(ngModel)]="description" />
+
+        </div>
+    </div>
+    <div nz-row style="margin-top:50px;">
+        <div nz-col nzSpan="2">
+        </div>
+        <div nz-col nzSpan="4"></div>
+        <button nz-button nzType="primary" (click)="addEvent()">add event</button>
+    </div>
+</div>

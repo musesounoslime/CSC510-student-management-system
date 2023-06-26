@@ -1,0 +1,193 @@
+<div>
+    <div nz-row style="margin-top:10px;">
+        <div nz-col nzSpan="2">
+        </div>
+        <div nz-col nzSpan="4">
+            <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+                <input type="text" [(ngModel)]="value" nz-input placeholder="Please enter the search content" />
+            </nz-input-group>
+            <ng-template #suffixIconButton>
+                <button nz-button nzType="primary" nzSearch (click)="search()"><span nz-icon
+                        nzType="search"></span></button>
+            </ng-template>
+        </div>
+        <div nz-col nzSpan="1"></div>
+    </div>
+    <div nz-row style="margin-top:0px;">
+        
+        <div nz-col nzSpan="12" style="overflow-x:scroll;">
+            <nz-table #rowSelectionTable [nzFrontPagination]="false" [nzData]="list" (nzPageIndexChange)="onPageIndexChange($event)" [nzTotal]='total'  [nzPageSize]='pageSize' [nzPageIndex]="currentPage">
+                <thead>
+                    <tr>
+              
+                        <th>Course</th>
+                        <th>Subject</th>
+                        <th>Semester</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Location</th>
+                        <th>Action</th>
+                        <th>Instructor</th>
+                        <th>Section</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of rowSelectionTable.data;let i=index">     
+        
+                        <td>{{ data.course }}</td>
+                        <td>{{ data.type }}</td>
+                        <td>{{ data.academic_session }}</td>
+                        <td>{{ data.date }}</td>
+                        <td>{{ data.time }}</td>
+                        <td>{{ data.location }}</td>
+                        <td>
+                            <span *ngIf="!data.isAdd" nz-icon nzType="delete" style="color:red" (click)="deleteCourse(data.id)"></span>
+                            <span *ngIf="data.isAdd" nz-icon nzType="plus-circle" style="color:green" (click)="tryAddCourse(data)"></span>
+                        </td>
+                        <td>{{ data.instructor }}</td>
+                        <td>{{ data.section }}</td>
+                        <td>{{ data.description }}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+
+        <div nz-col nzSpan="12">
+            <div style="width:100%;">
+                <div id="printBox" style="width:100%;">
+                        <div nz-row>
+                            <div nz-col nzSpan="2">
+                            </div>
+                            <div nz-col nzSpan="4">
+                                <nz-form-label>months</nz-form-label>
+                            </div>
+                            <div nz-col nzSpan="7">
+                                <nz-select [(ngModel)]="currentMonth" style="width:100%" (ngModelChange)="onMonthChange()">
+                                    <nz-option *ngFor="let item of months" [nzValue]="item.month" [nzLabel]="item.month"></nz-option>
+                                </nz-select>
+                            </div>
+                            <div nz-col nzSpan="3"></div>
+                            <button nz-button nzType="primary" nzSearch (click)="print()">print</button>
+                        </div>
+                    <div style="display:flex;width:calc(100% - 49px);float:right; margin-top: 10px;height:30px;">
+                        <div style="width:20%;text-align:center;border: 1px solid #eee;line-height: 30px;">Mon</div>
+                        <div style="width:20%;text-align:center;border: 1px solid #eee;line-height: 30px;">Tues</div>
+                        <div style="width:20%;text-align:center;border: 1px solid #eee;line-height: 30px;"> Wed</div>
+                        <div style="width:20%;text-align:center;border: 1px solid #eee;line-height: 30px;">Thur</div>
+                        <div style="width:20%;text-align:center;border: 1px solid #eee;line-height: 30px;">Fri</div>
+                    </div>
+                    <div
+                        style="display:flex;width:calc(100% - 49px);height:40px;float:right;border-left:1px solid #eee; border-right:1px solid #eee; box-sizing: border-box;">
+                        <div class="day" *ngFor="let item of days;"
+                            style="width:4%;height:100%;border: 1px solid #eee;border-bottom: none;  box-sizing: border-box;line-height: 40px;">
+                            {{ item }}
+                        </div>
+                    </div>
+                    <div id="time-container"
+                        style="width:100%;height:760px;border:1px #eee solid;border-left:none;display: flex;flex-flow: nowrap;position: relative;">
+                        <ul class="time-line" style="width:50px;height:100%;">
+                            <li style="text-align:center">7am</li>
+                            <li style="text-align:center">8am</li>
+                            <li style="text-align:center">9am</li>
+                            <li style="text-align:center">10am</li>
+                            <li style="text-align:center">11am</li>
+                            <li style="text-align:center">12pm</li>
+                            <li style="text-align:center">13pm</li>
+                            <li style="text-align:center">14pm</li>
+                            <li style="text-align:center">15pm</li>
+                            <li style="text-align:center">16pm</li>
+                            <li style="text-align:center">17pm</li>
+                            <li style="text-align:center">18pm</li>
+                            <li style="text-align:center">19pm</li>
+                            <li style="text-align:center">20pm</li>
+                        </ul>
+                        <ul id="time-line" style="width:calc(100% - 51px);height:100%;position: relative;">
+                            <li id="07am">
+                                <div *ngFor="let item of arr">
+                                    {{ item }}
+                                </div>
+                            </li>
+                            <li id="08am">
+                                <div *ngFor="let item of arr">
+                                    {{ item }}
+                                </div>
+                            </li>
+                            <li id="09am">
+                                <div *ngFor="let item of arr">
+                                    {{ item }}
+                                </div>
+                            </li>
+                            <li id="10am">
+                                <div *ngFor="let item of arr">
+                                    {{ item }}
+                                </div>
+                            </li>
+                            <li id="11am">
+                                <div *ngFor="let item of arr">
+                                    {{ item }}
+                                </div>
+                            </li>
+                            <li id="12pm">
+                                <div *ngFor="let item of arr">
+                                    {{ item }}
+                                </div>
+                            </li>
+                            <li id="01pm">
+                                <div *ngFor="let item of arr">
+                                    {{ item }}
+                                </div>
+                            </li>
+                            <li id="02pm">
+                                <div *ngFor="let item of arr">
+                                    {{ item }}
+                                </div>
+                            </li>
+                            <li id="03pm">
+                                <div *ngFor="let item of arr">
+                                    {{ item }}
+                                </div>
+                            </li>
+                            <li id="04pm">
+                                <div *ngFor="let item of arr">
+                                    {{ item }}
+                                </div>
+                            </li>
+                            <li id="05pm">
+                                <div *ngFor="let item of arr">
+                                    {{ item }}
+                                </div>
+                            </li>
+                            <li id="06pm">
+                                <div *ngFor="let item of arr">
+                                    {{ item }}
+                                </div>
+                            </li>
+                            <li id="07pm">
+                                <div *ngFor="let item of arr">
+                                    {{ item }}
+                                </div>
+                            </li>
+                            <li id="08pm">
+                                <div *ngFor="let item of arr">
+                                    {{ item }}
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <el-button style="float:right;margin-top:10px;" icon="el-icon-printer" v-print="print" type="primary">print
+                </el-button> -->
+            </div>
+        </div>
+    </div>
+    <nz-modal [(nzVisible)]="isOpen" nzTitle="Conflict detected, overwrite this item" (nzOnCancel)="isOpen = false" (nzOnOk)="onOk()">
+        <ng-container *nzModalContent>
+          <p>course: {{ conflictItem.course }}</p>
+          <p>type: {{ conflictItem.type }}</p>
+          <p>date: {{ conflictItem.date }}</p>
+          <p>time: {{ conflictItem.time }}</p>
+          <p>location: {{ conflictItem.location }}</p>
+        </ng-container>
+      </nz-modal>
+</div>

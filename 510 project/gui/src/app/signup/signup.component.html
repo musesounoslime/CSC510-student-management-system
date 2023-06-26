@@ -1,0 +1,29 @@
+<div style="width:100%;height:100%;display: flex;justify-content: center;align-items: center;">
+    <div class="login-wrap">
+      <div class="ms-login">
+        <div class="ms-title">Signup</div>
+        <form>
+          <div class="input-row" style="padding:20px;">
+            <label for="username" style="color:#fff;margin-right: 50px;">username：</label>
+            <input [(ngModel)]="username" type="text" name="name" class="input-field">
+          </div>
+          <div class="input-row" style="padding:20px;">
+            <label for="password" style="color:#fff;margin-right: 50px;">password：</label>
+            <input [(ngModel)]="password" type="password" name="password" class="input-field">
+          </div>
+          <div class="input-row" style="padding:20px;">
+            <label for="confirmPassword" style="color:#fff;">confirm password：</label>
+            <input [(ngModel)]="confirmPassword" type="password" name="confirmPassword" class="input-field">
+          </div>
+          <div class="login-btn">
+            <button nz-button nzType="primary" (click)="signup()">
+              signup
+            </button>
+            <button nz-button nzType="default" (click)="login()">
+                login
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
