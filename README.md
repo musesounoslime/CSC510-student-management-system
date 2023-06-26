@@ -1,5 +1,5 @@
 # CSC510-student-management-system
-NCSU CSC510 final project:
+NCSU CSC510 final project, Angular + Node.js:
 1. Admin can add semester and course.
 2. Student can enroll courses, courses will be shown at the right of enroll page, which is similar with NCSU wolfpack.
 3. Implemented unit test.
